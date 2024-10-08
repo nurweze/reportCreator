@@ -1,0 +1,16 @@
+Python implementation: CPython
+Python version       : 3.12.5
+IPython version      : 8.28.0
+
+pandas : 2.2.2
+json   : 2.0.9
+tkinter: unknown
+os     : unknown
+sys    : 3.12.5 (v3.12.5:ff3bc82f7c9, Aug  7 2024, 05:32:06) [Clang 13.0.0 (clang-1300.0.29.30)]
+pickle : unknown
+io     : unknown
+time   : unknown
+logging: 0.5.1.2
+pyreadr: 0.5.2
+
+Last updated: Mon Oct 07 2024 17:52:43

@@ -1,15 +1,4 @@
 
-import os
-import pandas as pd
-import pickle
-import xml.etree.ElementTree as ET
-import pyreadr
-import time
-import json
-
-import tkinter as tk
-from tkinter import filedialog
-
 
 '''
 Contains the classes FileReader, Serialization and Deserialization. 
@@ -40,6 +29,18 @@ Implemented?|  Filetype   |  Original datastructure |                     Serial
  or maybe create a whitelist of acceptable sites. 
  
 '''
+
+
+import os
+import pandas as pd
+import pickle
+import xml.etree.ElementTree as ET
+import pyreadr
+import time
+import json
+
+import tkinter as tk
+from tkinter import filedialog
 
 
 class FileReader:

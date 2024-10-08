@@ -1,13 +1,7 @@
 import os
-import time
 import logging
 import tkinter as tk
-import pandas as pd  
-import io
-import sys
-
 from tkinter import filedialog
-import json
 from importable import Serialization, Deserialization
 from processes import FileProcessor
 from exportable import Exportable
@@ -187,8 +181,6 @@ class GUIMaker:
         """Log messages to the console output widget."""
         self.console_output_1.insert(tk.END, message + "\n")
         self.console_output_1.see(tk.END)  # Scroll to the end of the console output
-        
-
         print(message)
 
 
@@ -209,6 +201,9 @@ class GUIMaker:
     
         # Call the deserialize_data function from processes.py
         deserialized_data = deserializer.deserialize_data(file_path)  
+        
+        # Log deserialization event
+        self.exportable.log_deserialization(file_path)  # Log the deserialized file path
 
         # Optionally log the deserialized data if it's a list or similar
         if isinstance(deserialized_data, str):  # Check if it's an error message
