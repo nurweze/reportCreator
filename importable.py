@@ -30,7 +30,6 @@ Implemented?|  Filetype   |  Original datastructure |                     Serial
  
 '''
 
-
 import os
 import pandas as pd
 import pickle
@@ -44,7 +43,6 @@ from tkinter import filedialog
 
 
 class FileReader:
-    
     
     def read_file(self, file_path: str):
         """Reads a file based on its extension and returns the data in an appropriate format."""
@@ -126,79 +124,50 @@ class Serialization:
             if format == "Pickle":
                 with open(file_path, 'wb') as pickled_file:
                     pickle.dump(data, pickled_file)
-                return f"Data successfully saved as Pickle to: {file_path}"
+                return file_path  # Return only the path of the serialized file
 
             elif format == "JSON":
                 with open(file_path, 'w') as json_file:
                     json.dump(data, json_file, indent=4)
-                return f"Data successfully saved as JSON to: {file_path}"
+                return file_path  # Return only the path of the serialized file
 
         except Exception as e:
             raise RuntimeError(f"Error serializing data: {e}")
         
 
 class Deserialization:
-
+    
+    '''
+    Just focuses on the deserialization according to right datastructure. 
+    The processing of logging and checking files is done by processes.py
+    '''
     
     def __init__(self, os_module=os):
-        self.os = os_module  # Store a reference to the os module
-        
-    
+        self.os = os_module
+
+
     def deserialize_data(self, file_path):
-        """
-        Deserialize data from a given file based on its extension.
-        """
-        # Check if the file exists
-        if not self.os.path.isfile(file_path):  # Use self.os instead of os
+        """Deserialize data from a given file based on its extension."""
+        if not self.os.path.isfile(file_path):
             return f"Error: The file does not exist: {file_path}"
 
-        # Get the file extension and convert it to lowercase
-        _, file_extension = self.os.path.splitext(file_path)  # Use self.os instead of os
+        _, file_extension = self.os.path.splitext(file_path)
         file_extension = file_extension.lower()
 
         try:
-            # Handle Pickle (.pkl) files
             if file_extension == '.pkl':
                 with open(file_path, 'rb') as file:
-                    data = pickle.load(file)
-                    return data  # Return the deserialized data
+                    return pickle.load(file)
 
-            # Handle JSON (.json) files
             elif file_extension == '.json':
                 with open(file_path, 'r') as file:
-                    data = json.load(file)
-                    return data  # Return the deserialized data
+                    return json.load(file)
 
-            # If the file type is not supported
             else:
                 return f"Error: Unsupported file type: {file_extension}. Please provide a .pkl or .json file."
-
         except Exception as e:
             return f"Error during deserialization: {e}"
         
 
-    def deserialize_file(self, output_console_1, output_console_2):
-        """Deserialize the selected file and log output to the specified consoles."""
-        file_path = self.get_deserialization_file_path()
-        if not file_path:
-            output_console_1.insert("end", "Error: No file path provided for deserialization.\n")
-            return
 
-        # Call the existing deserialize_data method
-        deserialized_data = self.deserialize_data(file_path)
-
-        if isinstance(deserialized_data, str):  # Check if it's an error message
-            output_console_1.insert("end", deserialized_data)
-        else:
-            output_console_2.insert("end", "Deserialized data:\n")
-            output_console_2.insert("end", f"{deserialized_data[:100]}")  # Log only the first 100 characters
-         
-         
-    def get_deserialization_file_path(self):
-        """Open a file dialog to select a file for deserialization."""
-        file_path = tk.filedialog.askopenfilename(
-            title="Select a file for deserialization",
-            filetypes=[("Pickle files", "*.pkl"), ("JSON files", "*.json"), ("All files", "*.*")]
-        )
-        return file_path
     

@@ -6,3 +6,5 @@ __pycache__/importable.cpython-312.pyc
 .ipynb_checkpoints/main-checkpoint.ipynb
 .DS_Store
 .ipynb_checkpoints/requirements-checkpoint.txt
+.pydevproject
+ReportTemplates/.project

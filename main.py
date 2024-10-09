@@ -1,11 +1,11 @@
 '''
-# Lionel Nurweze, start: 20240924, last change: 2024-10-07
+# Lionel Nurweze, start: 20240924, last change: 2024-10-09
 # lionel.nurweze -at- gmail -dot- com
 
 # Project motivation and goal reachable at colab.google.com.
 # Some code (especially the GUImaker.py) not runnable on Colab 
-# so this project will be moved to Jupyter Notes when time permits
-# and if it helps. 
+# so attempted to run on Jupyter Notes with GUI(tkinter) with some successes,
+# Will try to implement a runnable Notebook without own GUI. 
 
 # Refactored using chatGPT OpenAI. (2023). 
 # ChatGPT (GPT4o - Sep 2024 version) [Large language model]. https://chat.openai.com/chat.
