@@ -56,7 +56,7 @@ class FileReader:
         try:
             if file_extension == '.csv':
                 with open(file_path, 'r') as file:
-                    data = file.read()
+                    data = file.read(file)
                 print("The file is a .CSV File.")
                 
             elif file_extension == '.json':
