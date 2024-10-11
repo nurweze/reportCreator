@@ -1,4 +1,4 @@
-Python_version==3.12.5;
+Python_version==3.11;
 IPython_version==8.28.0;
 
 pandas==2.2.2;
